@@ -58,4 +58,23 @@ public class Rocket : MonoBehaviour
             thrusterSound.Stop();
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Friendly":
+                //Do nothing
+                print("ALIVE");
+                break;
+            case "Fuel":
+                //Get Fuel
+                print("FUEL");
+                break;
+            default:
+                //Die
+                print("DEAD");
+                break;
+        }
+    }
 }
