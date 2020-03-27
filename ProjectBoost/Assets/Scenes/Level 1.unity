@@ -1003,26 +1003,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2177111423132628513, guid: fc73380582c32cc4bbe13d4737592630,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 37.787277
-      objectReference: {fileID: 0}
     - target: {fileID: 2646356153706928801, guid: fc73380582c32cc4bbe13d4737592630,
         type: 3}
       propertyPath: m_Name
       value: Obstacle (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 2646356153706928801, guid: fc73380582c32cc4bbe13d4737592630,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 8148709011915352103, guid: fc73380582c32cc4bbe13d4737592630,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0fe2a160f26b7f94799bfb1fbff8eb82, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc73380582c32cc4bbe13d4737592630, type: 3}
 --- !u!1001 &4837864277634871965
