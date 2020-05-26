@@ -24,22 +24,39 @@ public class Rocket : MonoBehaviour
     [SerializeField] ParticleSystem explodingSoundParticles;
     [SerializeField] ParticleSystem coolSoundParticles;
 
+    bool isCollisionDisabled = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        if(state == State.Alive)
-        {
             rigidBody = GetComponent<Rigidbody>();
             audioSource = GetComponent<AudioSource>();
-        }
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        RespondToThrustInput();
-        RespondToRotateInput();
+        if (state == State.Alive)
+        {
+            RespondToThrustInput();
+            RespondToRotateInput();
+        }
+        if (Debug.isDebugBuild)
+        {
+            RespondDebugKeys();
+        }  
+    }
+
+    private void RespondDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            StartNextLevelSequence();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            isCollisionDisabled = !isCollisionDisabled;
+        }
     }
 
     void RespondToRotateInput()
@@ -85,7 +102,7 @@ public class Rocket : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive) {return;}
+        if (state != State.Alive || !isCollisionDisabled) {return;}
 
         switch (collision.gameObject.tag)
         {
@@ -127,6 +144,13 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextScene()
     {
-        SceneManager.LoadScene(1);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        }
+         
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }
